@@ -1,0 +1,6 @@
+framework module Pods_tetris_onlineTests {
+  umbrella header "Pods-tetris-onlineTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
