@@ -21,11 +21,9 @@ public class ShortConnectionSocket extends Thread {
             String requestHeader = in.readUTF();
             JSONObject header = new JSONObject(requestHeader);
             CommandDispatcher commandDispatcher = new CommandDispatcher();
-            commandDispatcher.dispatchCommand(header, response -> {
-                response(response);
-            });
+            commandDispatcher.dispatchCommand(header, response -> response(response));
         } catch (IOException e) {
-            e.printStackTrace();
+            return;
         } catch (JSONException e) {
             e.printStackTrace();
         }

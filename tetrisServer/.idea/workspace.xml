@@ -29,7 +29,7 @@
       <file leaf-file-name="ShortConnectionManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/nasoftware/NetworkLayer/ShortConnectionManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
+            <state relative-caret-position="224">
               <caret line="19" column="38" lean-forward="true" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -39,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShortConnectionSocket.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ShortConnectionSocket.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/nasoftware/NetworkLayer/ShortConnectionSocket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+            <state relative-caret-position="342">
+              <caret line="26" column="35" lean-forward="true" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#413#414#0" expanded="true" />
@@ -53,10 +53,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LongConnectionSocket.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LongConnectionSocket.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/nasoftware/NetworkLayer/LongConnectionSocket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
+            <state relative-caret-position="255">
               <caret line="27" selection-start-line="27" selection-end-line="27" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -127,12 +127,12 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/nasoftware/NetworkLayer/ServerManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nasoftware/NetworkLayer/LongConnectionManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nasoftware/NetworkLayer/LongConnectionSocket.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nasoftware/NetworkLayer/Server.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nasoftware/NetworkLayer/ShortConnectionManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nasoftware/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nasoftware/LogicLayer/CompletionHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nasoftware/LogicLayer/CommandDispatcher.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nasoftware/NetworkLayer/LongConnectionSocket.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nasoftware/NetworkLayer/ShortConnectionSocket.java" />
       </list>
     </option>
@@ -308,7 +308,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2349" y="44" width="1386" height="915" extended-state="0" />
+    <frame x="2231" y="39" width="1386" height="915" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -319,12 +319,12 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.43043995" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26753864" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24963924" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24963924" />
       <window_info id="Learn" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -345,14 +345,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/nasoftware/NetworkLayer/LongConnectionSocket.java</url>
-          <line>27</line>
-          <properties />
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="27" />
     </breakpoint-manager>
   </component>
@@ -458,37 +450,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nasoftware/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nasoftware/NetworkLayer/ShortConnectionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="19" column="38" lean-forward="true" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#615#616#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nasoftware/NetworkLayer/LongConnectionSocket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nasoftware/LogicLayer/CompletionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -506,14 +467,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nasoftware/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nasoftware/NetworkLayer/ShortConnectionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="19" column="38" lean-forward="true" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#615#616#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nasoftware/NetworkLayer/ShortConnectionSocket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+        <state relative-caret-position="342">
+          <caret line="26" column="35" lean-forward="true" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#413#414#0" expanded="true" />
             <element signature="e#449#450#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nasoftware/NetworkLayer/LongConnectionSocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
