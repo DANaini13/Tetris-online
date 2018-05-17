@@ -50,7 +50,7 @@ class TSShortConnectionNetworking: NSObject, TSSocketDelegate {
         tsSocket.delegate = self
     }
     
-    func get(args: Dictionary<String, Any>, success: (Dictionary<String, Any>) -> Void, failed: @escaping (String) -> Void) {
+    func get(args: Dictionary<String, Any?>, success: (Dictionary<String, Any?>) -> Void, failed: @escaping (String) -> Void) {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: args, options: .prettyPrinted)
             if let jsonObj = String.init(data: jsonData, encoding: .utf8) {
@@ -58,6 +58,7 @@ class TSShortConnectionNetworking: NSObject, TSSocketDelegate {
                     [weak self] in
                     print(jsonObj)
                     self?.error = nil
+                    self?.packet = nil
                     self?.tsSocket.connect(host: HOST, port: SHORT_CON_PORT);
                     self?.tsSocket.sendPacket(packet: jsonObj)
                     self?.waitingLock.lock()
@@ -66,9 +67,9 @@ class TSShortConnectionNetworking: NSObject, TSSocketDelegate {
                     while(self?.waiting)! {
                         usleep(2000)
                     }
-                    if let error = self?.error {
-                        failed(error.localizedDescription)
-                        return
+                    if self?.error != nil && self?.packet == nil {
+                        let error = self?.error!
+                        failed((error?.localizedDescription)!)
                     }
                     log.debug(self?.packet)
                     self?.packet = nil

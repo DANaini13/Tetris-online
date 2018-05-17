@@ -94,4 +94,15 @@ class TSLongConnectionNetworking: NSObject, TSSocketDelegate {
             log.debug("=====trying to reconnecting=====")
         })
     }
+    
+    private var packetBuffer: [String: Any?] = [:]
+    
+    func CGIRequest(args: Dictionary<String, Any?>, response:(Dictionary<String, Any>) -> Void) {
+        guard status == .connected else {
+            let res = ["error" : "server unreachable!"]
+            response(res)
+            return
+        }
+        
+    }
 }
