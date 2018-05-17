@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A2BC8F5D21E1AFE0868E5D1 /* Pods_tetris_onlineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEFCBF63863D1D1FEF940F6 /* Pods_tetris_onlineTests.framework */; };
+		14232B3920A6F4C700A823F9 /* TSSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14232B3820A6F4C700A823F9 /* TSSocketService.swift */; };
 		145E3D2920A6F15A007445DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145E3D2820A6F15A007445DB /* AppDelegate.swift */; };
 		145E3D2B20A6F15A007445DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145E3D2A20A6F15A007445DB /* ViewController.swift */; };
 		145E3D2E20A6F15A007445DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 145E3D2C20A6F15A007445DB /* Main.storyboard */; };
@@ -15,6 +16,8 @@
 		145E3D3320A6F15B007445DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 145E3D3120A6F15B007445DB /* LaunchScreen.storyboard */; };
 		145E3D3E20A6F15B007445DB /* tetris_onlineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145E3D3D20A6F15B007445DB /* tetris_onlineTests.swift */; };
 		145E3D4920A6F15B007445DB /* tetris_onlineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145E3D4820A6F15B007445DB /* tetris_onlineUITests.swift */; };
+		14B35B9E20A726AF00E35B19 /* TSNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B35B9D20A726AF00E35B19 /* TSNetworking.swift */; };
+		14D29DF320A70B9000C694D3 /* GlobalDefination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D29DF220A70B9000C694D3 /* GlobalDefination.swift */; };
 		77E492206BDBBC58079E2BA3 /* Pods_tetris_online.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A5EBAF1F6A46369D739693 /* Pods_tetris_online.framework */; };
 		F41208577C4FDF51F7E844C5 /* Pods_tetris_onlineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC6D138117EE0E19CEA5BF57 /* Pods_tetris_onlineUITests.framework */; };
 /* End PBXBuildFile section */
@@ -37,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14232B3820A6F4C700A823F9 /* TSSocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSSocketService.swift; sourceTree = "<group>"; };
 		145E3D2520A6F15A007445DB /* tetris-online.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tetris-online.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		145E3D2820A6F15A007445DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		145E3D2A20A6F15A007445DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +54,8 @@
 		145E3D4420A6F15B007445DB /* tetris-onlineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tetris-onlineUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		145E3D4820A6F15B007445DB /* tetris_onlineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tetris_onlineUITests.swift; sourceTree = "<group>"; };
 		145E3D4A20A6F15B007445DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14B35B9D20A726AF00E35B19 /* TSNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSNetworking.swift; sourceTree = "<group>"; };
+		14D29DF220A70B9000C694D3 /* GlobalDefination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalDefination.swift; sourceTree = "<group>"; };
 		33643F673D556F59233D0D2D /* Pods-tetris-online.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tetris-online.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tetris-online/Pods-tetris-online.debug.xcconfig"; sourceTree = "<group>"; };
 		8C331DE87EFD23F3B57643B5 /* Pods-tetris-onlineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tetris-onlineUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-tetris-onlineUITests/Pods-tetris-onlineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AE6486E3A0984C3E2666F891 /* Pods-tetris-onlineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tetris-onlineTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tetris-onlineTests/Pods-tetris-onlineTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -114,7 +120,8 @@
 		145E3D2720A6F15A007445DB /* tetris-online */ = {
 			isa = PBXGroup;
 			children = (
-				145E3D2820A6F15A007445DB /* AppDelegate.swift */,
+				14B35B9C20A7269000E35B19 /* HelpingFiles */,
+				14B35B9B20A7267800E35B19 /* TSNetworking */,
 				145E3D2A20A6F15A007445DB /* ViewController.swift */,
 				145E3D2C20A6F15A007445DB /* Main.storyboard */,
 				145E3D2F20A6F15B007445DB /* Assets.xcassets */,
@@ -140,6 +147,24 @@
 				145E3D4A20A6F15B007445DB /* Info.plist */,
 			);
 			path = "tetris-onlineUITests";
+			sourceTree = "<group>";
+		};
+		14B35B9B20A7267800E35B19 /* TSNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				14232B3820A6F4C700A823F9 /* TSSocketService.swift */,
+				14B35B9D20A726AF00E35B19 /* TSNetworking.swift */,
+			);
+			path = TSNetworking;
+			sourceTree = "<group>";
+		};
+		14B35B9C20A7269000E35B19 /* HelpingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				14D29DF220A70B9000C694D3 /* GlobalDefination.swift */,
+				145E3D2820A6F15A007445DB /* AppDelegate.swift */,
+			);
+			path = HelpingFiles;
 			sourceTree = "<group>";
 		};
 		1864F39BDE1BB47C221DC291 /* Frameworks */ = {
@@ -304,10 +329,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-tetris-online/Pods-tetris-online-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
+				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -376,7 +405,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				145E3D2B20A6F15A007445DB /* ViewController.swift in Sources */,
+				14B35B9E20A726AF00E35B19 /* TSNetworking.swift in Sources */,
+				14232B3920A6F4C700A823F9 /* TSSocketService.swift in Sources */,
 				145E3D2920A6F15A007445DB /* AppDelegate.swift in Sources */,
+				14D29DF320A70B9000C694D3 /* GlobalDefination.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,7 +585,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9VY4KTQAD7;
 				INFOPLIST_FILE = "tetris-online/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "NA.tetris-online";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -569,7 +604,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9VY4KTQAD7;
 				INFOPLIST_FILE = "tetris-online/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "NA.tetris-online";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -586,7 +624,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9VY4KTQAD7;
 				INFOPLIST_FILE = "tetris-onlineTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "NA.tetris-onlineTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -604,7 +646,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9VY4KTQAD7;
 				INFOPLIST_FILE = "tetris-onlineTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "NA.tetris-onlineTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -621,7 +667,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9VY4KTQAD7;
 				INFOPLIST_FILE = "tetris-onlineUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "NA.tetris-onlineUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -638,7 +688,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9VY4KTQAD7;
 				INFOPLIST_FILE = "tetris-onlineUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "NA.tetris-onlineUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

@@ -1,16 +1,28 @@
 PODS:
   - CocoaAsyncSocket (7.6.3)
+  - ObjcExceptionBridging (1.0.1):
+    - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
+  - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
+  - XCGLogger (6.0.2):
+    - XCGLogger/Core (= 6.0.2)
+  - XCGLogger/Core (6.0.2):
+    - ObjcExceptionBridging
 
 DEPENDENCIES:
   - CocoaAsyncSocket
+  - XCGLogger
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - CocoaAsyncSocket
+    - ObjcExceptionBridging
+    - XCGLogger
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
+  ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
+  XCGLogger: c9601cae9a8912de34a58666ba931ed3d624dd31
 
-PODFILE CHECKSUM: 367e1a08ecbfece6f6d7b38eee86650f23acaeb2
+PODFILE CHECKSUM: 348751dbb64b62dbd6b6063bad2de26044156449
 
 COCOAPODS: 1.5.0
