@@ -17,36 +17,33 @@ protocol TSSocketDelegate: class {
 
 class TSScoketService: NSObject, GCDAsyncSocketDelegate {
     
-    static let sharedInstance: TSScoketService = {
-        let instance = TSScoketService()
-        instance.asSocket = GCDAsyncSocket.init(delegate: instance, delegateQueue: DispatchQueue.main)
-        return instance
-    }()
-    
     weak var delegate: TSSocketDelegate?
     private var data: Data = Data()
     
-    func sendPacket(packet: String) -> Bool {
+    func sendPacket(packet: String) {
+        self.asSocket?.write(packet.javaUTF8()!, withTimeout: 2, tag: 1)
+    }
+    
+    func closeConnection() {
         guard (self.asSocket?.isConnected)! else {
-            return false
+            return
         }
- //       self.asSocket?.write(packet.javaUTF8()!, withTimeout: 2, tag: 1)
-        return true
+        self.asSocket?.disconnect()
     }
     
-    private override init() {
-        super.init()
-    }
-    
-    func connect() {
+    func connect(host:String, port: UInt16) {
         do {
-            try asSocket!.connect(toHost: host, onPort: port, withTimeout: 10)
+            try asSocket?.connect(toHost: host, onPort: port, withTimeout: 10)
         }catch let error{
             print(error)
         }
     }
     
     private var asSocket: GCDAsyncSocket? = nil
+    override init() {
+        super.init()
+        self.asSocket = GCDAsyncSocket.init(delegate: self, delegateQueue: DispatchQueue.main)
+    }
     
     internal func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
         self.delegate?.connected()

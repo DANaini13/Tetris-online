@@ -10,13 +10,14 @@
 		0A2BC8F5D21E1AFE0868E5D1 /* Pods_tetris_onlineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEFCBF63863D1D1FEF940F6 /* Pods_tetris_onlineTests.framework */; };
 		14232B3920A6F4C700A823F9 /* TSSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14232B3820A6F4C700A823F9 /* TSSocketService.swift */; };
 		145E3D2920A6F15A007445DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145E3D2820A6F15A007445DB /* AppDelegate.swift */; };
-		145E3D2B20A6F15A007445DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145E3D2A20A6F15A007445DB /* ViewController.swift */; };
 		145E3D2E20A6F15A007445DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 145E3D2C20A6F15A007445DB /* Main.storyboard */; };
 		145E3D3020A6F15B007445DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 145E3D2F20A6F15B007445DB /* Assets.xcassets */; };
 		145E3D3320A6F15B007445DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 145E3D3120A6F15B007445DB /* LaunchScreen.storyboard */; };
 		145E3D3E20A6F15B007445DB /* tetris_onlineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145E3D3D20A6F15B007445DB /* tetris_onlineTests.swift */; };
 		145E3D4920A6F15B007445DB /* tetris_onlineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145E3D4820A6F15B007445DB /* tetris_onlineUITests.swift */; };
-		14B35B9E20A726AF00E35B19 /* TSNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B35B9D20A726AF00E35B19 /* TSNetworking.swift */; };
+		1472C13920ADA51900DD41C9 /* TSShortConnectionNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1472C13820ADA51800DD41C9 /* TSShortConnectionNetworking.swift */; };
+		1472C13D20ADC4E200DD41C9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1472C13C20ADC4E200DD41C9 /* LoginViewController.swift */; };
+		14B35B9E20A726AF00E35B19 /* TSLongConnectionNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B35B9D20A726AF00E35B19 /* TSLongConnectionNetworking.swift */; };
 		14D29DF320A70B9000C694D3 /* GlobalDefination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D29DF220A70B9000C694D3 /* GlobalDefination.swift */; };
 		77E492206BDBBC58079E2BA3 /* Pods_tetris_online.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A5EBAF1F6A46369D739693 /* Pods_tetris_online.framework */; };
 		F41208577C4FDF51F7E844C5 /* Pods_tetris_onlineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC6D138117EE0E19CEA5BF57 /* Pods_tetris_onlineUITests.framework */; };
@@ -43,7 +44,6 @@
 		14232B3820A6F4C700A823F9 /* TSSocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSSocketService.swift; sourceTree = "<group>"; };
 		145E3D2520A6F15A007445DB /* tetris-online.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tetris-online.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		145E3D2820A6F15A007445DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		145E3D2A20A6F15A007445DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		145E3D2D20A6F15A007445DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		145E3D2F20A6F15B007445DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		145E3D3220A6F15B007445DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,7 +54,9 @@
 		145E3D4420A6F15B007445DB /* tetris-onlineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tetris-onlineUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		145E3D4820A6F15B007445DB /* tetris_onlineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tetris_onlineUITests.swift; sourceTree = "<group>"; };
 		145E3D4A20A6F15B007445DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		14B35B9D20A726AF00E35B19 /* TSNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSNetworking.swift; sourceTree = "<group>"; };
+		1472C13820ADA51800DD41C9 /* TSShortConnectionNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSShortConnectionNetworking.swift; sourceTree = "<group>"; };
+		1472C13C20ADC4E200DD41C9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		14B35B9D20A726AF00E35B19 /* TSLongConnectionNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSLongConnectionNetworking.swift; sourceTree = "<group>"; };
 		14D29DF220A70B9000C694D3 /* GlobalDefination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalDefination.swift; sourceTree = "<group>"; };
 		33643F673D556F59233D0D2D /* Pods-tetris-online.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tetris-online.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tetris-online/Pods-tetris-online.debug.xcconfig"; sourceTree = "<group>"; };
 		8C331DE87EFD23F3B57643B5 /* Pods-tetris-onlineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tetris-onlineUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-tetris-onlineUITests/Pods-tetris-onlineUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -120,9 +122,9 @@
 		145E3D2720A6F15A007445DB /* tetris-online */ = {
 			isa = PBXGroup;
 			children = (
+				1472C13B20ADC4BD00DD41C9 /* Accounts */,
 				14B35B9C20A7269000E35B19 /* HelpingFiles */,
 				14B35B9B20A7267800E35B19 /* TSNetworking */,
-				145E3D2A20A6F15A007445DB /* ViewController.swift */,
 				145E3D2C20A6F15A007445DB /* Main.storyboard */,
 				145E3D2F20A6F15B007445DB /* Assets.xcassets */,
 				145E3D3120A6F15B007445DB /* LaunchScreen.storyboard */,
@@ -149,11 +151,28 @@
 			path = "tetris-onlineUITests";
 			sourceTree = "<group>";
 		};
-		14B35B9B20A7267800E35B19 /* TSNetworking */ = {
+		1472C13A20ADA63700DD41C9 /* NetworkFramework */ = {
 			isa = PBXGroup;
 			children = (
 				14232B3820A6F4C700A823F9 /* TSSocketService.swift */,
-				14B35B9D20A726AF00E35B19 /* TSNetworking.swift */,
+				14B35B9D20A726AF00E35B19 /* TSLongConnectionNetworking.swift */,
+				1472C13820ADA51800DD41C9 /* TSShortConnectionNetworking.swift */,
+			);
+			path = NetworkFramework;
+			sourceTree = "<group>";
+		};
+		1472C13B20ADC4BD00DD41C9 /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				1472C13C20ADC4E200DD41C9 /* LoginViewController.swift */,
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
+		14B35B9B20A7267800E35B19 /* TSNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				1472C13A20ADA63700DD41C9 /* NetworkFramework */,
 			);
 			path = TSNetworking;
 			sourceTree = "<group>";
@@ -328,12 +347,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-tetris-online/Pods-tetris-online-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
 				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
@@ -404,11 +425,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				145E3D2B20A6F15A007445DB /* ViewController.swift in Sources */,
-				14B35B9E20A726AF00E35B19 /* TSNetworking.swift in Sources */,
+				1472C13D20ADC4E200DD41C9 /* LoginViewController.swift in Sources */,
+				14B35B9E20A726AF00E35B19 /* TSLongConnectionNetworking.swift in Sources */,
 				14232B3920A6F4C700A823F9 /* TSSocketService.swift in Sources */,
 				145E3D2920A6F15A007445DB /* AppDelegate.swift in Sources */,
 				14D29DF320A70B9000C694D3 /* GlobalDefination.swift in Sources */,
+				1472C13920ADA51900DD41C9 /* TSShortConnectionNetworking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,17 +8,18 @@
 
 import Foundation
 
-class TSNetworking: NSObject, TSSocketDelegate {
+class TSLongConnectionNetworking: NSObject, TSSocketDelegate {
     
     enum NetworkStatus {
+        case notInitialized
         case connected
         case disconnected
         case connecting
         case reconnecting
     }
     
-    static let sharedInstance:TSNetworking = {
-        let instance = TSNetworking()
+    static let sharedInstance:TSLongConnectionNetworking = {
+        let instance = TSLongConnectionNetworking()
         instance.tsSocket.delegate = instance
         return instance
     }()
@@ -28,7 +29,10 @@ class TSNetworking: NSObject, TSSocketDelegate {
     }
     
     func initNetwork() {
-        self.tsSocket.connect()
+        guard status == .notInitialized else {
+            return
+        }
+        self.tsSocket.connect(host: HOST, port: LONG_CON_PORT)
         statusLock.lock()
         status = .connecting
         statusLock.unlock()
@@ -63,10 +67,10 @@ class TSNetworking: NSObject, TSSocketDelegate {
     }
     
     private override init() {
-        tsSocket = TSScoketService.sharedInstance
+        tsSocket = TSScoketService()
         statusLock = NSRecursiveLock()
         statusLock.lock()
-        status = .disconnected
+        status = .notInitialized
         statusLock.unlock()
         reconnectionCount = 0
         super.init()
@@ -85,7 +89,7 @@ class TSNetworking: NSObject, TSSocketDelegate {
         reconnectionCount = 0
         timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: {
             [weak self] (_) in
-            self?.tsSocket.connect()
+            self?.tsSocket.connect(host: HOST, port: LONG_CON_PORT)
             self?.reconnectionCount += 1
             log.debug("=====trying to reconnecting=====")
         })
