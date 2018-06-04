@@ -40,6 +40,7 @@ class TSScoketService: NSObject, GCDAsyncSocketDelegate {
     }
     
     private var asSocket: GCDAsyncSocket? = nil
+    
     override init() {
         super.init()
         self.asSocket = GCDAsyncSocket.init(delegate: self, delegateQueue: DispatchQueue.main)

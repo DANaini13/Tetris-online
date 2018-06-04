@@ -30,9 +30,7 @@ class LoginViewController: UIViewController {
         let args = ["command":"login",
                     "account":"test",
                     "password":"password"]
-        TSShortConnectionNetworking.sharedInstance.get(args: args, success: { (result) in
-            print(result)
-        }) { (error) in
+        TSLongConnectionNetworking.sharedInstance.CGIRequest(args: args) { (error) in
             print(error)
         }
     }

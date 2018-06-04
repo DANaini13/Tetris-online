@@ -26,6 +26,7 @@ public class LongConnectionSocket extends Thread {
             DataInputStream in = new DataInputStream(server.getInputStream());
             while (true) {
                 String buffer = in.readUTF();
+                System.out.println(buffer);
                 JSONObject header = new JSONObject(buffer);
                 CommandDispatcher commandDispatcher = new CommandDispatcher();
                 commandDispatcher.dispatchCommand(header, response -> {
@@ -33,7 +34,7 @@ public class LongConnectionSocket extends Thread {
                 });
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            return;
         } catch (JSONException e) {
             e.printStackTrace();
         }

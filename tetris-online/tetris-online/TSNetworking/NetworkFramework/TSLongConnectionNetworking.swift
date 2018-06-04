@@ -63,7 +63,7 @@ class TSLongConnectionNetworking: NSObject, TSSocketDelegate {
     }
     
     internal func gotPacket(content: String) {
-        log.debug(content)
+        
     }
     
     private override init() {
@@ -95,14 +95,78 @@ class TSLongConnectionNetworking: NSObject, TSSocketDelegate {
         })
     }
     
-    private var packetBuffer: [String: Any?] = [:]
     
-    func CGIRequest(args: Dictionary<String, Any?>, response:(Dictionary<String, Any>) -> Void) {
+    //=============================================
+    private var syncBuffer: [String: Dictionary<String, Any?>] = [:]
+    private var requestBuffer: [Int: Dictionary<String, Any?>] = [:]
+    private var timerBuffer: [Int: Timer] = [:]
+    private var idBuffer: [Int] = []
+    private var maxId = 0
+    
+    private func getRequestId() -> Int {
+        if idBuffer.count > 0 {
+            return idBuffer.removeFirst()
+        }else {
+            maxId += 1
+            return maxId - 1
+        }
+    }
+    
+    private func checkBuffer(withID id: Int ) -> Dictionary<String, Any?>? {
+        if let result = requestBuffer[id] {
+            let buffer = result
+            requestBuffer.removeValue(forKey: id)
+            return buffer
+        } else {
+            return nil
+        }
+    }
+    
+    private func stopTimer(withID id: Int) {
+        timerBuffer[id]?.invalidate()
+        timerBuffer.removeValue(forKey: id)
+    }
+    
+    func CGIRequest(args: Dictionary<String, Any?>, response:@escaping (Dictionary<String, Any?>) -> Void) {
         guard status == .connected else {
             let res = ["error" : "server unreachable!"]
             response(res)
             return
         }
-        
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: args, options: .prettyPrinted)
+            if let jsonObj = String.init(data: jsonData, encoding: .utf8) {
+                tsSocket.sendPacket(packet: jsonObj)
+            }
+            let requestId = getRequestId()
+            let timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
+                [weak self] (_) in
+                if let packet = self?.checkBuffer(withID: requestId) {
+                    self?.stopTimer(withID: requestId)
+                    response(packet)
+                }
+            }
+            timerBuffer[requestId] = timer
+        }catch {
+            let error = ["error": error.localizedDescription]
+            response(error)
+        }
+    }
+    
+    func PUSHRequest(args: Dictionary<String, Any?>, response:@escaping (Dictionary<String, Any?>) -> Void) {
+        guard status == .connected else {
+            let error = ["error": "server unreachable!"]
+            response(error)
+            return
+        }
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: args, options: .prettyPrinted)
+            if let jsonObj = String.init(data: jsonData, encoding: .utf8) {
+                tsSocket.sendPacket(packet: jsonObj)
+            }
+        }catch {
+            let error = ["error": error.localizedDescription]
+            response(error)
+        }
     }
 }
