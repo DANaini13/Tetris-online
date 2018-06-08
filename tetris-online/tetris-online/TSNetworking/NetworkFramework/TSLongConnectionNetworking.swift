@@ -63,7 +63,36 @@ class TSLongConnectionNetworking: NSObject, TSSocketDelegate {
     }
     
     internal func gotPacket(content: String) {
-        
+        guard let json = content.parseJSONString else {
+            return
+        }
+        guard let type = json["type"] as? String else {
+            return
+        }
+        switch type {
+        case "CGI":
+            guard let requestStr = json["requestID"] as? String else {
+                return
+            }
+            guard let requestID = Int(requestStr) else {
+                return
+            }
+            requestBufferLock.lock()
+            requestBuffer[requestID] = json
+            requestBufferLock.unlock()
+            idBufferLock.lock()
+            idBuffer.append(requestID)
+            idBufferLock.unlock()
+        case "SYNC":
+            guard let command = json["command"] as? String else {
+                return
+            }
+            syncBufferLock.lock()
+            syncBuffer[command] = json
+            syncBufferLock.unlock()
+        default:
+            return
+        }
     }
     
     private override init() {
@@ -97,28 +126,58 @@ class TSLongConnectionNetworking: NSObject, TSSocketDelegate {
     
     
     //=============================================
-    private var syncBuffer: [String: Dictionary<String, Any?>] = [:]
-    private var requestBuffer: [Int: Dictionary<String, Any?>] = [:]
+    private var syncBuffer: [String: Dictionary<String, Any>] = [:]
+    private var syncBufferLock: NSRecursiveLock = NSRecursiveLock()
+    private var syncHandlerBuffer: [Int: (String, (Dictionary<String, Any>) -> Void)] = [:]
+    private var syncHandlerLock: NSRecursiveLock = NSRecursiveLock()
+    private var checkTimer: Timer? = nil
+    
+    private var requestBuffer: [Int: Dictionary<String, Any>] = [:]
+    private var requestBufferLock: NSRecursiveLock = NSRecursiveLock()
     private var timerBuffer: [Int: Timer] = [:]
     private var idBuffer: [Int] = []
+    private var idBufferLock: NSRecursiveLock = NSRecursiveLock()
     private var maxId = 0
-    
     private func getRequestId() -> Int {
+        idBufferLock.lock()
         if idBuffer.count > 0 {
-            return idBuffer.removeFirst()
+            let result = idBuffer.removeFirst()
+            idBufferLock.unlock()
+            return result
         }else {
             maxId += 1
+            idBufferLock.unlock()
             return maxId - 1
         }
     }
     
-    private func checkBuffer(withID id: Int ) -> Dictionary<String, Any?>? {
+    private func checkBuffer(withID id: Int ) -> Dictionary<String, Any>? {
+        requestBufferLock.lock()
         if let result = requestBuffer[id] {
             let buffer = result
             requestBuffer.removeValue(forKey: id)
+            requestBufferLock.unlock()
             return buffer
         } else {
+            requestBufferLock.unlock()
             return nil
+        }
+    }
+    
+    private func startSyncChecker() {
+        self.checkTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) {
+            [weak self] (_) in
+            if (self?.syncHandlerBuffer.count)! <= 0 {
+                self?.checkTimer?.invalidate()
+            }
+            for packet in (self?.syncBuffer)! {
+                for handler in (self?.syncHandlerBuffer)! {
+                    if packet.key == handler.value.0 {
+                        handler.value.1(packet.value)
+                        self?.syncBuffer.removeValue(forKey: packet.key)
+                    }
+                }
+            }
         }
     }
     
@@ -127,18 +186,21 @@ class TSLongConnectionNetworking: NSObject, TSSocketDelegate {
         timerBuffer.removeValue(forKey: id)
     }
     
-    func CGIRequest(args: Dictionary<String, Any?>, response:@escaping (Dictionary<String, Any?>) -> Void) {
+    func CGIRequest(args: Dictionary<String, Any?>, response:@escaping (Dictionary<String, Any>) -> Void) {
         guard status == .connected else {
             let res = ["error" : "server unreachable!"]
             response(res)
             return
         }
         do {
-            let jsonData = try JSONSerialization.data(withJSONObject: args, options: .prettyPrinted)
+            let requestId = getRequestId()
+            var request = args
+            request["requestID"] = requestId
+            request["requestType"] = "CGI"
+            let jsonData = try JSONSerialization.data(withJSONObject: request, options: .prettyPrinted)
             if let jsonObj = String.init(data: jsonData, encoding: .utf8) {
                 tsSocket.sendPacket(packet: jsonObj)
             }
-            let requestId = getRequestId()
             let timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
                 [weak self] (_) in
                 if let packet = self?.checkBuffer(withID: requestId) {
@@ -153,14 +215,16 @@ class TSLongConnectionNetworking: NSObject, TSSocketDelegate {
         }
     }
     
-    func PUSHRequest(args: Dictionary<String, Any?>, response:@escaping (Dictionary<String, Any?>) -> Void) {
+    func PUSHRequest(args: Dictionary<String, Any?>, response:@escaping (Dictionary<String, Any>) -> Void) {
         guard status == .connected else {
             let error = ["error": "server unreachable!"]
             response(error)
             return
         }
         do {
-            let jsonData = try JSONSerialization.data(withJSONObject: args, options: .prettyPrinted)
+            var request = args
+            request["requestType"] = "PUSH"
+            let jsonData = try JSONSerialization.data(withJSONObject: request, options: .prettyPrinted)
             if let jsonObj = String.init(data: jsonData, encoding: .utf8) {
                 tsSocket.sendPacket(packet: jsonObj)
             }
@@ -168,5 +232,25 @@ class TSLongConnectionNetworking: NSObject, TSSocketDelegate {
             let error = ["error": error.localizedDescription]
             response(error)
         }
+    }
+    
+    func registerSyncHandler(command: String, response:@escaping (Dictionary<String, Any>) -> Void) -> Int {
+        syncHandlerLock.lock()
+        let requestId = getRequestId()
+        syncHandlerBuffer[requestId] = (command, response)
+        syncHandlerLock.unlock()
+        if syncHandlerBuffer.count <= 1 {
+            startSyncChecker()
+        }
+        return requestId
+    }
+    
+    func unregisterSyncHandler(handlerID: Int) {
+        syncHandlerLock.lock()
+        syncHandlerBuffer.removeValue(forKey: handlerID)
+        syncHandlerLock.unlock()
+        idBufferLock.lock()
+        idBuffer.append(handlerID)
+        idBufferLock.unlock()
     }
 }

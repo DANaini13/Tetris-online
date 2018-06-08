@@ -4,6 +4,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.*;
 import java.net.Socket;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -22,6 +24,22 @@ public class LongConnectionSocket extends Thread {
     }
 
     public void run() {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("testValue", "shit");
+                    jsonObject.put("type", "SYNC");
+                    jsonObject.put("command", "test");
+                    sendPack(jsonObject.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, 0, 2*1000);
+
         try {
             DataInputStream in = new DataInputStream(server.getInputStream());
             while (true) {
@@ -30,7 +48,8 @@ public class LongConnectionSocket extends Thread {
                 JSONObject header = new JSONObject(buffer);
                 CommandDispatcher commandDispatcher = new CommandDispatcher();
                 commandDispatcher.dispatchCommand(header, response -> {
-
+                    JSONObject jsonObject = new JSONObject();
+                    sendPack(response.toString());
                 });
             }
         } catch (IOException e) {
@@ -41,6 +60,7 @@ public class LongConnectionSocket extends Thread {
     }
 
     public void sendPack(String pack) {
+        System.out.println(pack);
         try {
             lock.lock();
             PrintWriter writer = new PrintWriter(server.getOutputStream());
